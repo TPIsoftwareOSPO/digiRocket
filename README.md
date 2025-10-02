@@ -1,19 +1,30 @@
-# digiRocket(dgrkt)
+# digiRocket (dgrkt)
 
-`dgrkt` is a convenient command-line utility built with Go and Cobra. It's designed to orchestrate and execute a series of commands based on a declarative YAML configuration file, similar to how container orchestrators manage services. This tool simplifies the management of complex multi-command setups, making it ideal for local development environments, testing suites, or task automation.
+**digiRocket (dgrkt)** is a lightweight yet powerful **command-line orchestration tool** built with Go and Cobra.  
+It helps developers **automate, organize, and monitor multi-command workflows** through a simple declarative YAML configuration.
 
-With `dgrkt`, you define your tasks, their execution parameters, and their dependencies, allowing you to bring up and manage an entire set of related processes with a single command. It includes robust health check capabilities, ensuring that each task is healthy before dependent tasks are started.
+Instead of juggling multiple terminal windows or writing complex shell scripts, dgrkt allows you to:  
+- Define all tasks in one YAML file.  
+- Manage dependencies between processes.  
+- Run everything with a **single command**.  
 
-### Features
+Whether you are setting up **local development environments**, running **test suites**, or managing **automation pipelines**, digiRocket makes it easier, more reliable, and less error-prone.
 
-- Declarative Configuration: Define all your commands and their settings in a human-readable YAML file.
-- Process Orchestration: Run multiple commands concurrently or sequentially based on defined dependencies.
-- Comprehensive Health Checks: Ensure your tasks are healthy before proceeding.
-    - HTTP Health Checks: Verify service availability via HTTP GET requests.
-      - JSON Path Validation: Extract and validate specific values from JSON HTTP responses.
-    - Command Health Checks: Use custom shell commands to determine task health.
-- Dependency Management: Specify task dependencies to control the startup order.
-- Flexible Execution: Set base_dir, executable, args, and envs for each task.
+## Why use digiRocket?
+- 🚀 **Simplify complexity** – Stop remembering long command chains. Manage everything in YAML.  
+- ✅ **Reliable execution** – Built-in health checks ensure tasks only run when dependencies are ready.  
+- 🔄 **Flexible orchestration** – Run tasks concurrently or sequentially as your workflow demands.  
+- 🛠️ **Developer-friendly** – Ideal for repetitive setups in dev, test, or CI/CD environments.  
+
+## Features
+- **Declarative Configuration**: Define all your commands and their settings in a human-readable YAML file.  
+- **Process Orchestration**: Run multiple commands concurrently or sequentially based on defined dependencies.  
+- **Comprehensive Health Checks**: Ensure your tasks are healthy before proceeding.  
+- **HTTP Health Checks**: Verify service availability via HTTP GET requests.  
+- **JSON Path Validation**: Extract and validate specific values from JSON HTTP responses.  
+- **Command Health Checks**: Use custom shell commands to determine task health.  
+- **Dependency Management**: Specify task dependencies to control the startup order.  
+- **Flexible Execution**: Set `base_dir`, `executable`, `args`, and `envs` for each task.  
 
 
 
