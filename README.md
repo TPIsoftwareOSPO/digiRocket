@@ -10,11 +10,51 @@ Instead of juggling multiple terminal windows or writing complex shell scripts, 
 
 Whether you are setting up **local development environments**, running **test suites**, or managing **automation pipelines**, digiRocket makes it easier, more reliable, and less error-prone.
 
-## Why use digiRocket?
+## Why digiRocket?
 - 🚀 **Simplify complexity** – Stop remembering long command chains. Manage everything in YAML.  
 - ✅ **Reliable execution** – Built-in health checks ensure tasks only run when dependencies are ready.  
 - 🔄 **Flexible orchestration** – Run tasks concurrently or sequentially as your workflow demands.  
 - 🛠️ **Developer-friendly** – Ideal for repetitive setups in dev, test, or CI/CD environments.  
+- 🔍 **Transparent and observable** – Easy to debug, verify, and reproduce environments.  
+
+---
+
+## Typical Use Cases
+- Spin up **local development environments** with multiple services (databases, API servers, message queues).  
+- Run **integration tests** that require dependent services to be alive before execution.  
+- Automate **CI/CD workflows** with reproducible, declarative task orchestration.  
+- Replace fragile **bash scripts or Makefiles** with structured, maintainable YAML configs.  
+
+---
+
+## Quick Start
+
+Here’s a minimal example:
+
+**`dgrkt.yml`**
+```yaml
+tasks:
+  api:
+    executable: go
+    args: ["run", "./cmd/api"]
+    healthcheck:
+      http:
+        url: http://localhost:8080/health
+
+  worker:
+    executable: go
+    args: ["run", "./cmd/worker"]
+    depends_on: [api]
+```
+
+Run with:
+```bash
+dgrkt up
+```
+
+👉 dgrkt will start the **API service**, wait until it passes its health check, and only then start the **worker**.
+
+---
 
 ## Features
 - **Declarative Configuration**: Define all your commands and their settings in a human-readable YAML file.  
@@ -25,6 +65,13 @@ Whether you are setting up **local development environments**, running **test su
 - **Command Health Checks**: Use custom shell commands to determine task health.  
 - **Dependency Management**: Specify task dependencies to control the startup order.  
 - **Flexible Execution**: Set `base_dir`, `executable`, `args`, and `envs` for each task.  
+
+---
+
+## Comparison to Alternatives
+- **vs Shell Scripts**: YAML is cleaner, more maintainable, and supports health checks + dependency logic.  
+- **vs Makefiles**: Designed for orchestration, not just build targets.  
+- **vs Docker Compose**: Works for any executable, not limited to containers.  
 
 
 
